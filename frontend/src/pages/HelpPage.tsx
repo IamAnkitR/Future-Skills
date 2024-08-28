@@ -9,9 +9,7 @@ export const HelpPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-    fetch(`${backendUrl}/api/cards`)
+    fetch(`https://future-skills.onrender.com/api/cards`)
       .then((res) => res.json())
       .then((data) => setCards(data))
       .catch((err) => console.error(err));
