@@ -1,11 +1,12 @@
 import express, { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
+import { Card } from '../interface';
 
 const prisma = new PrismaClient();
 
 export const getCards = async (req: Request, res: Response) => {
   try {
-    const cards = await prisma.card.findMany();
+    const cards: Card[] = await prisma.card.findMany();
     res.status(200).json(cards);
   } catch (error: any) {
     res.status(500).json({
@@ -17,9 +18,9 @@ export const getCards = async (req: Request, res: Response) => {
 
 export const postCards = async (req: Request, res: Response) => {
   try {
-    const { title, description } = req.body;
+    const { title, description } = req.body as Omit<Card, 'id'>;
 
-    const newCard = await prisma.card.create({
+    const newCard: Card = await prisma.card.create({
       data: {
         title,
         description,
@@ -37,7 +38,7 @@ export const postCards = async (req: Request, res: Response) => {
 export const getCardsWithTitle = async (req: Request, res: Response) => {
   try {
     const { title } = req.params;
-    const card = await prisma.card.findUnique({
+    const card: Card | null = await prisma.card.findUnique({
       where: { title },
     });
 
