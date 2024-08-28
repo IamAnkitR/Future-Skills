@@ -7,9 +7,14 @@ interface HelpCardProps {
 
 export const HelpCard: React.FC<HelpCardProps> = ({ card }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 m-4 w-full md:w-1/3 lg:w-1/4">
-      <h2 className="text-lg font-semibold text-gray-800">{card.title}</h2>
-      <p className="text-gray-600 mt-2">{card.description}</p>
+    <div className="rounded-lg shadow-sm w-full h-full">
+      <h2 className="text-2xl font-bold text-gray-800 pt-4 px-6 pb-2">
+        {card.title}
+      </h2>
+      <hr className="border border-gray-200" />
+      <p className="text-gray-600 text-xl font-medium mt-2 px-6">
+        {card.description}
+      </p>
     </div>
   );
 };
