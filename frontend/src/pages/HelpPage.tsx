@@ -9,7 +9,9 @@ export const HelpPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch(`https://future-skills.onrender.com/api/cards`)
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+    fetch(`${backendUrl}/api/cards`)
       .then((res) => res.json())
       .then((data) => setCards(data))
       .catch((err) => console.error(err));
@@ -31,11 +33,11 @@ export const HelpPage: React.FC = () => {
             <input
               type="text"
               placeholder="Search"
-              className="w-[30vw] p-3 mb-6 border border-gray-300 rounded-sm pr-10" // add padding-right for the arrow
+              className="w-[40vw] p-3 mb-6 border border-gray-300 rounded-sm pl-3 " // Increased padding-right for icon space
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 mb-5 mr-24">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-gray-600 rotate-90"

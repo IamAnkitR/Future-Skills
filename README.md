@@ -73,6 +73,8 @@ Create a `.env` file in the `frontend` directory with the following environment 
 VITE_BACKEND_URL=https://future-skills.onrender.com
 ```
 
+Or your backend server
+
 ## **Database Setup**
 
 1. **Prisma Migrations:**

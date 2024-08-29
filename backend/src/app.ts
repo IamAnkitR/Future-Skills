@@ -9,7 +9,7 @@ app.use(express.json());
 app.use('/api', routes.cardRoutes);
 
 app.get('/ping', (req: Request, res: Response) => {
-  res.send('Pong');
+  res.send('Server is up and running');
 });
 
 export default app;
